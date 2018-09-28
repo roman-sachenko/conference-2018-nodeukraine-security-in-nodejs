@@ -40,6 +40,28 @@ module.exports = {
   },
 
   /**
+   * Timing attack example
+   * @param {*} req 
+   * @param {*} res 
+   * @param {*} next 
+   */
+  timingAttack(req, res, next) {
+    const { password } = req.body;
+    const NS_PER_SEC = 1e9;
+
+    const validString = 'take a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you willtake a look to the sky just before you die, its the last time you will';
+
+    const timeStart = process.hrtime();
+    const checkResult = (password === validString);
+    const timeDiff = process.hrtime(timeStart);
+    const fullDiff = timeDiff[0] * NS_PER_SEC + timeDiff[1];
+
+    console.log(fullDiff);
+
+    return res.send({ fullDiff, checkResult });
+  },
+
+  /**
    * DB Injections Attacks
    * @param {*} req 
    * @param {*} res 
@@ -89,13 +111,12 @@ module.exports = {
   },
 
   /**
-   * Memory Leak
+   * Memory Leak Issue
    * @param {*} req 
    * @param {*} res 
    * @param {*} next 
    */
   memoryLeak(req, res, next) {
-    // memoryLeakCollector.push({ buff: Buffer.alloc(9999, 'djfhjsdkhfsjdhfsdhf') });
     memoryLeakCollector.push({
       date: new Date(),
       headers: req.headers,

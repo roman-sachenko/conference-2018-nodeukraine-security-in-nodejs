@@ -23,7 +23,8 @@ appRoute
   .delete('/db-injection/', controller.dbInjectionDelete)
   .post('/db-injection/', controller.dbInjectionPost)
   .post('/re-dos/', controller.reDosAttack)
-  .post('/brute-force/', controller.bruteForceAttack);
+  .post('/brute-force/', controller.bruteForceAttack)
+  .post('/timing/', controller.timingAttack);
 
 checkRoute
   .get('/rate', controller.checkRate);
