@@ -1,5 +1,14 @@
 # NodeUkraine Conference 2018 Demo - Security in NodeJS
 
+## Contents
+
+
+1. [Description](#description) 
+2. [Run Service](#run-server)
+  * [Run for regular needs](#regular-needs)
+  * [Run for memory leak investigation](#memory-leak-investigation)
+3. [Articles](#articles)(./docs/articles.md)
+
 ## Description
 
 There are dozens of mistakes that can be easily made and lead to huge security problems.  On the other hand, there are even more ways to break an application, such as DB injections, brute-force attacks, regular expression DOS, memory leaks, and hijacking require chain, just to name a few.  During the presentation, I’ll list the most common security problems, talk about the current situation in WEB and will explain how to deal with safety concerns. What can we do to decrease the level of 'insecurity'? I'll teach the audience to deal with security holes and will explain the must-steps which should be performed before launching a new application.
@@ -19,7 +28,7 @@ There are dozens of mistakes that can be easily made and lead to huge security p
 
 `$npm run start`
 
-### Memory leal investigation
+### Memory leak investigation
 
 `$npm run start:mem-leak-check`
 
