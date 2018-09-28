@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "pm2 start server.js --watch",
-    "start:mem-leak-check": "node --inspect app.js"
+    "start:mem-leak-check": "node --inspect app.js",
+    "attack:brute-force": "python ./scripts/bruteForce.py http://127.0.0.1:3000/attacks/brute-force/ ./scripts/data/user.txt ./scripts/data/passListSmall.txt"
   },
   "author": "",
   "license": "ISC",
