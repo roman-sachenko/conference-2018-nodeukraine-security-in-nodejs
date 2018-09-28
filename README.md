@@ -7,7 +7,7 @@
 2. [Run Service](#run-server)
   * [Run for regular needs](#regular-needs)
   * [Run for memory leak investigation](#memory-leak-investigation)
-3. [Articles](#articles)(./docs/articles.md)
+3. [Articles](./docs/articles.md)
 
 ## Description
 
