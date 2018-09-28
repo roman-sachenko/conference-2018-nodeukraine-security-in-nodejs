@@ -6,10 +6,10 @@
   const User = mongoose.model('User', { name: String });
 
   const promise = [];
-  
+
   for (let index = 0; index < 10; index++) {
-    let user = new User({ name: Math.random().toString(36).substring(7) });
-    promise.push(user.save())
+    const user = new User({ name: Math.random().toString(36).substring(7) });
+    promise.push(user.save());
   }
 
   try {

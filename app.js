@@ -13,7 +13,7 @@ const PORT = 3000;
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5
+  max: 5,
 });
 
 
@@ -44,4 +44,3 @@ mongoose.model('User', { name: String });
 app.listen(PORT, () => {
   console.log(`Hell yeah on port ${PORT}`);
 });
-
