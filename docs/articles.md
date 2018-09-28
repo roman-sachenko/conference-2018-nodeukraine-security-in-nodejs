@@ -3,6 +3,7 @@
 ### General
 
 * https://medium.com/@rsachenko/nodejs-security-development-3d78f7e3a72b
+* https://www.cvedetails.com/vendor/12113/Nodejs.html
 
 
 ### Regular Expression DOS
