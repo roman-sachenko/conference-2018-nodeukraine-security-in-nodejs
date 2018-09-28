@@ -1,0 +1,26 @@
+{
+  "name": "2018_node_conf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "timing-attack.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start server.js --watch",
+    "start:mem-leak-check": "node --inspect app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "https://github.com/kelektiv/node.bcrypt.js.git#master",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-rate-limit": "^3.2.0",
+    "http": "0.0.0",
+    "install": "^0.12.1",
+    "joi": "^13.6.0",
+    "mongoose": "^5.2.17",
+    "npm": "^6.4.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
