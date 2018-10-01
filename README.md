@@ -7,16 +7,9 @@
 2. [Run Service](#run-server)
   * [Run for regular needs](#regular-needs)
   * [Run for memory leak investigation](#memory-leak-investigation)
-3. [Vulnerabilities and attacks](#vulnerabilities-and-attacks)
-  * [Brute-Force attack](#brute-force-attack)
-  * [Database injection](#database-injections)
-  * [ReDOS](#regular-expressions-dos)
-  * [Memory leaks](#memory-leaks)
-  * [Hijacking the require chain](#hijacking-the-require-chain)
-  * [Timing attack](#timing-attack)
-  * [Hash table collision attack](#hash-table-collision-attack)
+3. [Vulnerabilities and attacks](./docs/vulnerabilities.md)
 4. [Articles](./docs/articles.md)
-5. [POSTMAN Collection] (./docs/Conference.postman_collection.json)
+5. [POSTMAN Collection](./docs/Conference.postman_collection.json)
 
 ## Description
 
