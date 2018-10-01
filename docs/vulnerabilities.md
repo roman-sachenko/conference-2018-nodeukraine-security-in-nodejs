@@ -1,6 +1,7 @@
 ### [<- Back](../README.md)
 
-[Vulnerabilities and attacks](#vulnerabilities-and-attacks)
+## Vulnerabilities and attacks
+
   * [Brute-Force attack](#brute-force-attack)
   * [Database injection](#database-injections)
   * [ReDOS](#regular-expressions-dos)
@@ -9,8 +10,6 @@
   * [Timing attack](#timing-attack)
   * [Hash table collision attack](#hash-table-collision-attack)
 
-
-## Vulnerabilities and attacks
 
 ### Brute-Force attack
 
