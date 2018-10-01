@@ -10,6 +10,7 @@
 3. [Vulnerabilities and attacks](./docs/vulnerabilities.md)
 4. [Articles](./docs/articles.md)
 5. [POSTMAN Collection](./docs/Conference.postman_collection.json)
+6. [Slides - Security in NodeJS](./docs/slides_roman_sachenko-security-in-nodejs-symphony-of-destruction.pdf)
 
 ## Description
 
