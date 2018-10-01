@@ -1,7 +1,7 @@
 (async () => {
   const mongoose = require('mongoose');
 
-  mongoose.connect('mongodb://localhost/node_conf', { useNewUrlParser: true });
+  mongoose.connect('mongodb://localhost/node_ukraine_db', { useNewUrlParser: true });
 
   const User = mongoose.model('User', { name: String });
 

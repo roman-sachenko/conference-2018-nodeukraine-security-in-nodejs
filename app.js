@@ -38,7 +38,7 @@ app
   .use('/check', checkRoute);
 
 
-mongoose.connect('mongodb://localhost/node_conf', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/node_ukraine_db', { useNewUrlParser: true });
 mongoose.model('User', { name: String });
 
 app.listen(PORT, () => {
