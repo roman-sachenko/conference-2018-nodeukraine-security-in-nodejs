@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "4ad121dc-5e64-4e57-8116-d18a3af0edf8",
+		"name": "Conference",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "node_ukraine_2018",
+			"item": [
+				{
+					"name": "attack.redos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"title\"\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/attacks/re-dos",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"attacks",
+								"re-dos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attack.bruteforce",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"title\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/attacks/brute-force",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"attacks",
+								"brute-force"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check.rate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"title\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/check/rate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"check",
+								"rate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attack.dbinjection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"{$exists: true}\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/attacks/db-injection/?name={$exists: true}",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"attacks",
+								"db-injection",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{$exists: true}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attack.dbInjection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"myName\",\n\t\"extraField\": \"extra\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/attacks/db-injection/?isToValidate=true",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"attacks",
+								"db-injection",
+								""
+							],
+							"query": [
+								{
+									"key": "isToValidate",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attack.dbInjection",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": {\"$exists\": true}\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/attacks/db-injection/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"attacks",
+								"db-injection",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "issue.memoryLeak",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"4\",\n\t\"compareByChar\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/attacks/memory-leak",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"attacks",
+								"memory-leak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attack.timing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"pass\",\n\t\"compareByChar\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/attacks/timing/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"attacks",
+								"timing",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
