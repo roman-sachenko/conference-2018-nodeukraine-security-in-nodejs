@@ -18,8 +18,8 @@ Run: `$python ./scripts/bruteForce.py`
 
 ### Database injections
 
-Insert Users: `$node ./scripts/insertUsers.js`
-Call: `DELETE http://127.0.0.1:3000/attacks/db-injection/`
+1. Insert Users: `$node ./scripts/insertUsers.js`
+2. Call: `DELETE http://127.0.0.1:3000/attacks/db-injection/`
 
 With body:
 ```
