@@ -9,7 +9,8 @@ const appRoute = express.Router({ strict: true });
 const checkRoute = express.Router({ strict: true });
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/node_ukraine_db';
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -38,7 +39,8 @@ app
   .use('/check', checkRoute);
 
 
-mongoose.connect('mongodb://localhost/node_ukraine_db', { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI);
+
 mongoose.model('User', { name: String });
 
 app.listen(PORT, () => {

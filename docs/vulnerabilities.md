@@ -13,12 +13,12 @@
 
 ### Brute-Force attack
 
-Run: `$python ./scripts/bruteForce.py`
+Run: `$node ./scripts/exploit-brute-force.js`
 
 
 ### Database injections
 
-1. Insert Users: `$node ./scripts/insertUsers.js`
+1. Insert Users: `$node ./scripts/insert-users.js`
 2. Call: `DELETE http://127.0.0.1:3000/attacks/db-injection/`
 
 With body:

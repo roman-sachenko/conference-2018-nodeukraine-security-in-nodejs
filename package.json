@@ -1,16 +1,21 @@
 {
   "name": "2018_node_conf",
   "version": "1.0.0",
-  "description": "",
-  "main": "timing-attack.js",
+  "description": "Node.js Security Vulnerabilities Demonstration",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "./node_modules/.bin/eslint  . *.js",
-    "lint:fix": "./node_modules/.bin/eslint  . *.js --fix",
-    "start": "pm2 start server.js --watch",
-    "start:mem-leak-check": "node --inspect app.js",
-    "attack:brute-force": "python ./scripts/bruteForce.py http://127.0.0.1:3000/attacks/brute-force/ ./scripts/data/user.txt ./scripts/data/passListSmall.txt",
-    "users:insert":"node ./scripts/insertUsers.js"
+    "lint": "./node_modules/.bin/eslint src/*.js",
+    "lint:fix": "./node_modules/.bin/eslint src/*.js --fix",
+    "start": "node src/server.js",
+    "start:dev": "nodemon src/server.js",
+    "start:mem-leak-check": "node --inspect src/app.js",
+    "attack:brute-force": "node ./scripts/exploit-brute-force.js",
+    "users:insert": "node ./scripts/insert-users.js",
+    "exploit:all": "node ./scripts/exploit-all.js"
   },
   "config": {
     "ghooks": {
@@ -21,23 +26,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "https://github.com/kelektiv/node.bcrypt.js.git#master",
-    "body-parser": "^1.18.3",
-    "eslint": "^5.6.0",
-    "express": "^4.16.3",
-    "express-rate-limit": "^3.2.0",
-    "ghooks": "^2.0.4",
-    "http": "0.0.0",
-    "install": "^0.12.1",
-    "joi": "^13.6.0",
-    "mongoose": "^5.2.17",
-    "npm": "^6.4.1",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.2",
-    "save-dev": "^2.0.0"
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "joi": "^17.11.0",
+    "mongoose": "^8.0.3"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.29.1",
+    "nodemon": "^3.0.2"
   }
 }
