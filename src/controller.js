@@ -50,7 +50,7 @@ module.exports = {
    * @param {*} next
    */
   timingAttack(req, res, next) {
-    console.log('[Timing] Request received, processing...');
+    console.log("[Timing] Request received, processing...");
     const { password, compareByChar } = req.body;
 
     let checkFunction = null;
@@ -85,7 +85,7 @@ module.exports = {
    * @param {*} next
    */
   async dbInjectionGet(req, res, next) {
-    console.log('[DBInjection] GET request received, processing...');
+    console.log("[DBInjection] GET request received, processing...");
     const { User } = mongoose.models;
     const dbQuery = req.query;
 
@@ -117,7 +117,7 @@ module.exports = {
   },
 
   async dbInjectionDelete(req, res, next) {
-    console.log('[DBInjection] DELETE request received, processing...');
+    console.log("[DBInjection] DELETE request received, processing...");
     const data = req.body;
     const { User } = mongoose.models;
 
@@ -131,7 +131,7 @@ module.exports = {
   },
 
   async dbInjectionPost(req, res, next) {
-    console.log('[DBInjection] POST request received, processing...');
+    console.log("[DBInjection] POST request received, processing...");
     const data = req.body;
     const { isToValidate } = req.query;
     const { User } = mongoose.models;
@@ -158,12 +158,12 @@ module.exports = {
    * @param {*} next
    */
   memoryLeak(req, res, next) {
-    console.log('[MemoryLeak] Request received, adding to collector...');
+    console.log("[MemoryLeak] Request received, adding to collector...");
     memoryLeakCollector.push({
       date: new Date(),
       headers: req.headers,
     });
-    console.log('[MemoryLeak] Response sent');
+    console.log("[MemoryLeak] Response sent");
     return res.send(memoryLeakCollector);
   },
 
@@ -174,9 +174,58 @@ module.exports = {
    * @param {*} next
    */
   checkRate(req, res, next) {
-    console.log('[RateLimit] Request received, checking rate limit...');
-    console.log('[RateLimit] Response sent');
+    console.log("[RateLimit] Request received, checking rate limit...");
+    console.log("[RateLimit] Response sent");
     return res.send({ success: true });
+  },
+
+  /**
+   * Real MongoDB Timing Attack
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  async timingAttackDB(req, res, next) {
+    console.log("[TimingDB] Request received, processing...");
+    const { password } = req.body;
+
+    // Ensure test data exists
+    await setupTimingData();
+
+    const NS_PER_SEC = 1e9;
+    const { User } = mongoose.models;
+
+    const timeStart = process.hrtime();
+
+    try {
+      const query = { password: { $regex: `^${password}`, $options: "i" } };
+
+      const result = await User.find(query).limit(1);
+      const timeDiff = process.hrtime(timeStart);
+      const fullDiff = timeDiff[0] * NS_PER_SEC + timeDiff[1];
+
+      const timingData = {
+        password,
+        passwordLength: password ? password.length : 0,
+        found: result.length > 0,
+        fullDiff,
+        nanoseconds: fullDiff,
+        milliseconds: (fullDiff / 1e6).toFixed(2),
+        query: `^${password}`,
+        documentsFound: result.length,
+      };
+
+      console.log(
+        `[TimingDB] Attack completed in ${timingData.milliseconds}ms`
+      );
+      return res.send(timingData);
+    } catch (error) {
+      console.error("[TimingDB] Error:", error.message);
+      return res.status(500).send({
+        error: error.message,
+        password,
+      });
+    }
   },
 };
 
@@ -197,4 +246,35 @@ const validateUserData = (userData) => {
 
 const compareStringsRegular = (initialString, compareString) => {
   return initialString === compareString;
+};
+
+// Helper function to setup test data for timing attacks
+const setupTimingData = async () => {
+  const { User } = mongoose.models;
+
+  try {
+    // Clear existing data
+    await User.deleteMany({});
+
+    // Insert test users with different password patterns
+    const testUsers = [
+      { name: "Alice", password: "secret123" },
+      { name: "Bob", password: "secret456" },
+      { name: "Charlie", password: "admin123" },
+      { name: "David", password: "password123" },
+      { name: "Eve", password: "user123" },
+      { name: "Frank", password: "test123" },
+      { name: "Grace", password: "supercalifragilisticexpialidocious" },
+      { name: "Henry", password: "abcdefghijklmnopqrstuvwxyz" },
+      { name: "Ivy", password: "123456789012345678901234567890" },
+      { name: "Jack", password: "qwertyuiopasdfghjklzxcvbnm" },
+    ];
+
+    await User.insertMany(testUsers);
+    console.log("[Setup] Test data created successfully");
+    return true;
+  } catch (error) {
+    console.error("[Setup] Error:", error.message);
+    return false;
+  }
 };

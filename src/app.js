@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const controller = require('./controller');
 
-const appRoute = express.Router({ strict: true });
+const appRoute = express.Router();
 const checkRoute = express.Router({ strict: true });
 const app = express();
 
@@ -25,7 +25,8 @@ appRoute
   .post('/db-injection/', controller.dbInjectionPost)
   .post('/re-dos/', controller.reDosAttack)
   .post('/brute-force/', controller.bruteForceAttack)
-  .post('/timing/', controller.timingAttack);
+  .post('/timing/', controller.timingAttack)
+  .post('/timing-db/', controller.timingAttackDB);
 
 checkRoute
   .get('/rate', controller.checkRate);
@@ -41,7 +42,7 @@ app
 
 mongoose.connect(MONGODB_URI);
 
-mongoose.model('User', { name: String });
+mongoose.model('User', { name: String, password: String });
 
 app.listen(PORT, () => {
   console.log(`Hell yeah on port ${PORT}`);
